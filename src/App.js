@@ -1,24 +1,6 @@
 import React from 'react';
 import './App.css';
-
-const players = [
-  {name: 'LDK', score: 30, id: 1},
-  {name: 'HONG', score: 40, id: 2},
-  {name: 'KIM', score: 50, id: 3},
-  {name: 'PARK', score: 60, id: 4},
-];
-
-const Header = (props) => {
-  console.log(props);
-  // destruct assignment
-  const {title, totalPlayers} = props;
-  return (
-    <header className="header">
-      <h1 className="h1">{title}</h1>
-      <span className='stats'>Players: {totalPlayers}</span>
-    </header>
-  );
-}
+import {Header} from "./components/Header";
 
 const Player = (props) => (
   <div className='player'>
@@ -73,10 +55,10 @@ class Counter extends React.Component {
 class App extends React.Component {
   state = {
     players: [
-      {name: 'LDK', id: 1},
-      {name: 'HONG', id: 2},
-      {name: 'KIM', id: 3},
-      {name: 'PARK', id: 4},
+      {name: 'Geunhwan', id: 1},
+      {name: 'Donghoon', id: 2},
+      {name: 'Hyeoncheol', id: 3},
+      {name: 'Jaeho', id: 4},
     ]
   }
   // 1) player 삭제 콜백 펑션 정의
