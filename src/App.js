@@ -4,6 +4,7 @@ import {Header} from "./components/Header";
 import Player from "./components/Player";
 import AddPlayerForm from "./components/AddPlayerForm";
 import CustomPlayer from "./components/CustomPlayer";
+import _ from 'lodash';
 
 let maxId = 4;
 
@@ -56,6 +57,13 @@ class App extends React.Component {
     })
   }
 
+  // 가장 높은 Score를 return
+  getHighScore(){
+    let maxHighScore = 0;
+    const maxObj = _.maxBy(this.state.players, 'score');
+    return maxObj.score ? maxObj.score : null;
+  }
+
   render() {
     return (
       <div className='scoreboard'>
@@ -64,8 +72,9 @@ class App extends React.Component {
         {
           this.state.players.map(player => (
             <CustomPlayer name={player.name} key={player.id} id={player.id} score={player.score}
-                    changeScore={this.handleChangeScore}  // function의 결과값이 아닌 function 자체를 내려준다
-                    removePlayer={this.handleRemovePlayer}/>
+                          isHighScore={player.score === this.getHighScore()}
+                          changeScore={this.handleChangeScore}  // function의 결과값이 아닌 function 자체를 내려준다
+                          removePlayer={this.handleRemovePlayer}/>
           ))
         }
         <AddPlayerForm addPlayer={this.handleAddPlayer}></AddPlayerForm>
