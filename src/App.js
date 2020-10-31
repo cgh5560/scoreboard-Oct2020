@@ -3,6 +3,7 @@ import './App.css';
 import {Header} from "./components/Header";
 import Player from "./components/Player";
 import AddPlayerForm from "./components/AddPlayerForm";
+import CustomPlayer from "./components/CustomPlayer";
 
 let maxId = 4;
 
@@ -62,7 +63,7 @@ class App extends React.Component {
 
         {
           this.state.players.map(player => (
-            <Player name={player.name} key={player.id} id={player.id} score={player.score}
+            <CustomPlayer name={player.name} key={player.id} id={player.id} score={player.score}
                     changeScore={this.handleChangeScore}  // function의 결과값이 아닌 function 자체를 내려준다
                     removePlayer={this.handleRemovePlayer}/>
           ))
