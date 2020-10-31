@@ -20,7 +20,9 @@ class App extends React.Component {
     this.setState((prevState) => {
 
       const players = prevState.players.filter((player) => player.id !== id);
-      return { players: players};
+      // short hand property : key 와 value가 같으면 하나를 생략
+      // return { players:players} 와 동일
+      return { players};
 
       // players: prevState.players.filter(item => item.id !== id)
       // id가 1이 들어왔을 때, false true true true 이므로 LDK 빼고 출력 된다.
@@ -29,6 +31,16 @@ class App extends React.Component {
 
   handleChangeScore = (delta, id) => {
     console.log('handleChangeScore:', delta, id);
+    this.setState((prevState) => {
+      // 원본 배열 players를 ...을 통해 새로운 메모리에 카피하여 players에 담았다.
+      const players = [ ...prevState.players];
+      players.forEach(player => {
+        if(player.id === id){ // parameter로 넘어온 id와 일치하는 id인 player의 score값에 delta값을 더해준다.
+          player.score += delta;
+        }
+      })
+      return { players:players};
+    })
   }
 
   render() {
