@@ -12,7 +12,8 @@ class AddPlayerForm extends React.Component{
     // default로 일어나는 action=""을 막아준다
     e.preventDefault();
     console.log('handleSubmit');
-    this.props.addPlayer();
+    this.props.addPlayer(this.state.value);
+    this.setState({value: ''});
   }
   render() {
     return (

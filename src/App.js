@@ -4,6 +4,7 @@ import {Header} from "./components/Header";
 import Player from "./components/Player";
 import AddPlayerForm from "./components/AddPlayerForm";
 
+let maxId = 4;
 
 class App extends React.Component {
   state = {
@@ -44,9 +45,14 @@ class App extends React.Component {
     })
   }
 
-  handleAddPlayer = () => {
-    console.log('handleAddplayer');
-
+  handleAddPlayer = (name) => {
+    console.log('handleAddPlayer : ', name);
+    this.setState(prevState => {
+      const players = [...prevState.players]
+      //추가하는 로직
+      players.push({name: name, score:0, id: ++maxId});
+      return {players};
+    })
   }
 
   render() {
