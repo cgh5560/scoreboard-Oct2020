@@ -27,6 +27,10 @@ class App extends React.Component {
     })
   }
 
+  handleChangeScore = (delta, id) => {
+    console.log('handleChangeScore:', delta, id);
+  }
+
   render() {
     return (
       <div className='scoreboard'>
@@ -35,6 +39,7 @@ class App extends React.Component {
         {
           this.state.players.map(player => (
             <Player name={player.name} key={player.id} id={player.id} score={player.score}
+                    changeScore={this.handleChangeScore}  // function의 결과값이 아닌 function 자체를 내려준다
                     removePlayer={this.handleRemovePlayer}/>
           ))
         }
