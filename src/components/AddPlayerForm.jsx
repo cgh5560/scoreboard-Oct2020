@@ -8,9 +8,15 @@ class AddPlayerForm extends React.Component{
   handleValueChange = (e) => {
     this.setState({value: e.target.value});
   }
+  handleSubmit = (e) => {
+    // default로 일어나는 action=""을 막아준다
+    e.preventDefault();
+    console.log('handleSubmit');
+    this.props.addPlayer();
+  }
   render() {
     return (
-      <form className="form">
+      <form className="form" onSubmit={this.handleSubmit}>
         <input type="text" className="input" placeholder="enter a player's name"
           value={this.state.value}
           onChange={this.handleValueChange}/>
