@@ -7,10 +7,10 @@ import Player from "./components/Player";
 class App extends React.Component {
   state = {
     players: [
-      {name: 'Geunhwan', id: 1},
-      {name: 'Donghoon', id: 2},
-      {name: 'Hyeoncheol', id: 3},
-      {name: 'Jaeho', id: 4},
+      {name: 'Geunhwan', score:0, id: 1},
+      {name: 'Donghoon', score:0, id: 2},
+      {name: 'Hyeoncheol', score:0, id: 3},
+      {name: 'Jaeho', score:0, id: 4},
     ]
   }
   // 1) player 삭제 콜백 펑션 정의
@@ -34,7 +34,7 @@ class App extends React.Component {
 
         {
           this.state.players.map(player => (
-            <Player name={player.name} key={player.id} id={player.id}
+            <Player name={player.name} key={player.id} id={player.id} score={player.score}
                     removePlayer={this.handleRemovePlayer}/>
           ))
         }

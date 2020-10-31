@@ -1,15 +1,16 @@
 import React from 'react';
 import Counter from "./Counter";
 
-function Player(props) {
+// 객체 할당 기법으로 props를 모두 해체
+function Player({score, removePlayer, name, id}) {
   return (
     <div className='player'>
     <span className='player-name'>
       <button className='remove-player'
-              onClick={() => props.removePlayer(props.id)}>x</button>
+              onClick={() => removePlayer(id)}>x</button>
     </span>
-      <span className='player-name'>{props.name}</span>
-      <Counter/>
+      <span className='player-name'>{name}</span>
+      <Counter score={score}/>
     </div>
   );
 }
