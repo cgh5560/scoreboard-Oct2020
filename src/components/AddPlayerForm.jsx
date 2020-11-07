@@ -1,10 +1,13 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 
 function AddPlayerForm(props) {
   const [value, setValue] = useState('');
 
-  const formRef = React.createRef();
-  const textRef = React.createRef();
+  // const formRef = useRef(null);
+  // const textRef = useRef(null);
+
+  const formRef = useRef(null);
+  const textRef = useRef(null);
 
   const handleValueChange = (e) => {
     setValue(e.target.value);
