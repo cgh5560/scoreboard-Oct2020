@@ -1,35 +1,24 @@
 import React, {useEffect, useRef, useState} from "react";
+import {useInterval} from "../hooks/useInterval";
 
 function Stopwatch() {
   let tickRef;
   const [isRunning, setIsRunning] = useState(false);
   const [timer, setTimer] = useState(0);
 
-  const refIsRunning = useRef(false);
-
-  const tick = () =>{
-    console.log(refIsRunning.current, timer);
-    if (refIsRunning.current) {
-      setTimer(timer => timer + 1);
+  useInterval(() => {
+    if (isRunning) {
+      setTimer(timer + 1);
     }
-  }
-
-  useEffect(()=> {
-    tickRef = setInterval(tick, 1000);
-    return () => {
-      clearInterval(tickRef);
-    }
-  }, []);
+  }, 1000);
 
   const getButton = () => {
     if(isRunning){
-      refIsRunning.current = true;
       return(
         <button onClick={()=> setIsRunning(!isRunning)}>stop</button>
       );
     }
     else{
-      refIsRunning.current = false;
       return (
       <button onClick={()=> setIsRunning(!isRunning)}>start</button>
       );
